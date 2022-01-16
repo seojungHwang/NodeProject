@@ -1,16 +1,16 @@
-const http = require("http"); //require 를 사용하면 해당 모듈을 사용가능! node를 설치하면 http 내장되어 있음
+const express = require("express");
+const server = express(); //자바에서 클래스 역할(express라는 클래스를 메모리에 올림)
 
-//req -> 클라이언트의 요청을 받음/ res -> 요청받은 것을 서버에 보냄
-const server = http.createServer((req, res) => {
-    if(req.url === "/") {
-        res.write("<h1>Hello from node</h1>");
-    }else{
-        res.write(`<h1>You have entered this url : ${req.url}</h1>`);
-        //`` -> 문자열과 변수를 적절히 같이 사용 가능
-    }
-    res.end(); //응답 마무리
+server.get("/", (req, res) => {
+    //res.send("<h1>Hello from nodejs</h1>");
+    res.sendFile(__dirname + "/index.html"); //view 파일을 불러옴(sendFile(__dirname)
 });
 
-server.listen(3000, () => {
+server.get("/about", (req, res) => {
+    res.sendFile(__dirname + "/about.html");
+});
+
+server.listen(3000, (err) => {
+    if(err) return console.log(err);
     console.log("The server is listening on port 3000");
 });
