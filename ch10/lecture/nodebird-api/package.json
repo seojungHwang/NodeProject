@@ -17,6 +17,7 @@
     "mysql": "^2.18.1",
     "nunjucks": "^3.2.3",
     "passport": "^0.5.2",
+    "passport-kakao": "^1.0.1",
     "passport-local": "^1.0.0",
     "sequelize": "^6.13.0",
     "uuid": "^8.3.2"
